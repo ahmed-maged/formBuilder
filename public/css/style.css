@@ -1,0 +1,196 @@
+body{
+    margin: 0px;
+    padding: 0px;
+/*    background: url('../img/1.jpg');*/
+}
+.header{
+}
+.clear-fix{
+    clear: both;
+}
+.main_content{
+    width: 910px;
+    margin: 0px auto;
+    text-align: center;
+    background-color: #727B84;
+    border: 1px solid #c2c1a7;
+    border-radius: 5px;
+}
+h3{
+    margin:0px;
+    padding: 0px;
+}
+.side{
+    width: 320px;
+    height: 95%;
+    float: left;
+    background-color: #D9E2E1;
+    margin: 10px;
+    padding-top: 10px;
+    border: 1px solid #DF9496;
+    border-radius: 4px;
+    text-align: center;
+}
+.form_area , .show_all{
+    width: 525px;
+    min-height: 550px;
+    float: left;
+    background-color: #F4F3EE;
+    margin: 10px;
+    border: 1px solid #DF9496;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: left;
+}
+.show_all{
+    width: 869px;
+}
+.nav{
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    background-color: #D9E2E1;
+    border: 1px solid #727B84;
+    border-radius: 5px;
+    position: fixed;
+    left: 50px;
+    top: 100px;
+}
+.choose_input{
+    border-radius: 6px;
+    width: 140px;
+    height: 30px;
+    background-color: #F5DEB3;
+    color: tomato;
+    border: 1px solid #d3bc91;
+    text-align: center;
+    float: left;
+    margin-left: 9px;
+    margin-top: 9px;
+    padding-top: 8px;
+}
+.choose_input:hover{
+    background-color: #F4F3EE;
+    cursor: pointer;
+}
+input[type=text],input[type=password]{
+    width: 250px;
+    height: 20px;
+}
+textarea{
+    width: 250px;
+    height: 60px;
+}
+.mockContainer{
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px auto;
+}
+.mockContainer:hover{
+    background-color: #A2ADBC;
+}
+.mockContainer label{
+    margin-bottom: 5px;
+}
+.delete{
+    width: 12px;
+    height: 12px;
+    float: right;
+    position: relative;
+    top: -24px;
+    right: -5px;
+    background: url('../img/Delete.png');
+}
+.rearrange{
+    width: 12px;
+    height: 12px;
+    float: right;
+    position: relative;
+    top: -24px;
+    right: 2px;
+    background: url('../img/move.png');
+}
+.delete , .rearrange:hover{
+    cursor: pointer;
+}
+#formProps, #fieldProps{
+    width: 275px;
+    text-align: left;
+    margin: 5px auto;
+    padding: 5px;
+}
+#formProps input ,#formProps textarea , #fieldProps input ,#fieldProps textarea{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.mockPropsContainer{
+    display: none;
+}
+#submitButton{
+    padding: 5px 10px;
+}
+input[type=submit]{
+    padding: 5px 10px;
+}
+.submit{
+    position: fixed;
+    top: 85%;
+    left: 38%;
+    background-color: #D9E2E1;
+    padding: 10px;
+    border: 1px solid tomato;
+    border-radius: 4px;
+}
+#singleForm input[type=text]{
+    width: 300px;
+    padding: 5px;
+    border-radius: 4px;
+}
+#singleForm textarea{
+    width: 300px;
+    height: 100px;
+    padding: 5px;
+    border-radius: 4px;
+}
+.form_label{
+    margin-top: 20px;
+}
+.form_input{
+    margin-top: 5px;
+}
+.nav_list{
+    list-style-type: none;
+    text-align: left;
+    margin: 5px;
+    padding: 8px;
+}
+.nav_list li{
+    
+}
+.nav_list a{
+    text-decoration: none;
+}
+.forms_list{
+    list-style-type: none;
+    padding: 1px;
+}
+.forms_list li{
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #F6F4DA;
+}
+.forms_link{
+    float: left;
+    margin-left: 5px;
+    padding: 7px;
+    background-color: lightsalmon;
+    border: 1px solid darksalmon;
+    border-radius: 4px;
+}
+.forms_link a{
+    text-decoration: none;
+    color: darkolivegreen;
+}

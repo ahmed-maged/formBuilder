@@ -31,11 +31,15 @@ class Home_Controller extends Base_Controller {
 	*/
 
     public $restful = true;
-    
+
+    /**
+     *  render main view
+     */
     public function get_index()
     {
             return View::make('home.index');
     }
+
 
     public function post_index()
     {

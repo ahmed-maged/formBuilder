@@ -1,0 +1,16 @@
+# Enable Rewriting
+Options +FollowSymLinks
+IndexIgnore */*
+RewriteEngine on
+
+#RewriteRule ^public/.* $1 [END]
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^.*$ /vote/public/index.php [NC,L]
+#RewriteRule ^(.*)/?$ index.php?action=$1 [QSA,END]
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# otherwise forward it to index.php
+RewriteRule (.*) index.php?action=$1 [QSA]

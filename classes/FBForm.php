@@ -1,6 +1,6 @@
 <?php
 
-class FBForm {
-
+class FBForm extends BaseModel {
+    public $tableName = 'forms';
 
 }

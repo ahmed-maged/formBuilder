@@ -17,11 +17,9 @@ class Db
         if(Db::$dbh == null)
         {
             $host = 'localhost';
-            $dbname = 'holly_recruit';
-//            $user = 'root';
-//            $pass = '';
-            $user = 'holly';
-            $pass = 'KHAM210!!';
+            $dbname = 'formbuilder';
+            $user = 'root';
+            $pass = '';
             try {
                 Db::$dbh = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
             }

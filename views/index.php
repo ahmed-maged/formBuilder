@@ -1,7 +1,5 @@
-@layout('templates.main')
-@section('content')
- 
-    {{ Form::open() }}
+
+    <form method="post">
     <div class="form_area">
         <h3 style="text-align: center;">Form</h3>
         <hr>
@@ -232,5 +230,3 @@ $(document).ready(function(){
 })
 </script>
 
-
-@endsection

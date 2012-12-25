@@ -1,9 +1,8 @@
-@layout('templates.main')
-@section('content')
+
 <div class="show_all" style="min-height: 300px;">
-    <h3 style="text-align: center">Entries for form: {{ $form->name }}</h3>
+    <h3 style="text-align: center">Entries for form: <?php echo $form->name ?></h3>
     <ul class="forms_list">
-@foreach( $entries as $formNumber=>$entry )
+<?php foreach( $entries as $formNumber=>$entry ): ?>
 <li>
     <p>Entry {{ $formNumber }}</p>
     <div class="forms_link">{{ HTML::link_to_action("Home@entry","View Entry",array('formNumber'=>$formNumber,'formId'=>$form->id)) }}</div>
@@ -12,7 +11,7 @@
     </div>
     <div class="clear-fix"></div>
 </li>
-@endforeach
+<?php endforeach; ?>
     </ul>
 </div>
 <script>

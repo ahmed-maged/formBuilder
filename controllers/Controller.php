@@ -1,74 +1,44 @@
 <?php
-# hamada Larvel framework
-class Home_Controller extends Base_Controller {
 
-	/*
-	|--------------------------------------------------------------------------
-	| The Default Controller
-	|--------------------------------------------------------------------------
-	|
-	| Instead of using RESTful routes and anonymous functions, you might wish
-	| to use controllers to organize your application API. You'll love them.
-	|
-	| This controller responds to URIs beginning with "home", and it also
-	| serves as the default controller for the application, meaning it
-	| handles requests to the root of the application.
-	|
-	| You can respond to GET requests to "/home/profile" like so:
-	|
-	|		public function action_profile()
-	|		{
-	|			return "This is your profile!";
-	|		}
-	|
-	| Any extra segments are passed to the method as parameters:
-	|
-	|		public function action_profile($id)
-	|		{
-	|			return "This is the profile for user {$id}.";
-	|		}
-	|
-	*/
-
-    public $restful = true;
+class Controller extends BaseController {
 
     /**
      *  render main view
      */
     public function get_index()
     {
-            return View::make('home.index');
+        $this->render('index.php');
     }
-
 
     public function post_index()
     {
-        
         $form = new FBForm();
-        $form->name = Input::get('formName');
-        $form->description = Input::get('formDesc');
+        $form->name = $_POST['formName'];
+        $form->description = $_POST['formDesc'];
         $form->save();
-        $inputs = Input::get('inputs');
-        foreach($inputs as $input)
+        if(isset($_POST['inputs']))
         {
-            $newInput = new FBInput();
-            $newInput->form_id = $form->id;
-            $newInput->type = $input['type'];
-            $newInput->name = $input['label'];
-            $newInput->save();
+            $inputs = $_POST['inputs'];
+            foreach($inputs as $input)
+            {
+                $newInput = new FBInput();
+                $newInput->form_id = $form->id;
+                $newInput->type = $input['type'];
+                $newInput->name = $input['label'];
+                $newInput->save();
+            }
         }
-
         $msg = "Your form has been submitted!";
-        return View::make('home.message',array('msg'=>$msg));
+        $this->render('message.php',array('msg'=>$msg));
 
     }
     
     public function get_forms()
     {
         $forms = FBForm::all();
-        return View::make('home.forms',array('forms'=>$forms));
+        $this->render('forms.php',array('forms'=>$forms));
     }
-    
+
     public function get_entries($formId)
     {
         $entriesOriginal = Data::where('form_id','=',$formId)->order_by('form_number')->get();
@@ -114,10 +84,9 @@ class Home_Controller extends Base_Controller {
     
     public function get_test()
     {
-        $form = FBForm::with('inputs')->with('data')->find('4');
-        echo "<pre>";        
-        print_r($form);
-        echo "</pre>";
+        $form = FBForm::find(1);
+//        echo $form->id;die;
+        print_r($form->data());
     }
 
 

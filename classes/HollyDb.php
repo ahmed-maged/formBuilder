@@ -5,7 +5,7 @@
  * Date: 12/19/12
  * Time: 11:56 PM
  */
-class Db
+class HollyDb
 {
     private static $dbh = null;
     private function __construct()
@@ -14,19 +14,19 @@ class Db
     }
     public static function getDBH()
     {
-        if(Db::$dbh == null)
+        if(HollyDb::$dbh == null)
         {
             $host = 'localhost';
-            $dbname = 'formbuilder';
+            $dbname = 'formbuilder_test';
             $user = 'root';
             $pass = '';
             try {
-                Db::$dbh = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
+                HollyDb::$dbh = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
             }
             catch(PDOException $e) {
                 echo $e->getMessage();
             }
         }
-        return Db::$dbh;
+        return HollyDb::$dbh;
     }
 }

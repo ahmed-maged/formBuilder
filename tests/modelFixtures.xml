@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<dataset>
+    <table name="data">
+        <column>id</column>
+        <column>form_number</column>
+        <column>form_id</column>
+        <column>input_id</column>
+        <column>data</column>
+        <row>
+            <value>1</value>
+            <value>1</value>
+            <value>1</value>
+            <value>1</value>
+            <value>Hi</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>2</value>
+            <value>1</value>
+            <value>1</value>
+            <value>Hi</value>
+        </row>
+        <row>
+            <value>3</value>
+            <value>1</value>
+            <value>2</value>
+            <value>1</value>
+            <value>Hi</value>
+        </row>
+    </table>
+    <table name="forms">
+        <column>id</column>
+        <column>name</column>
+        <column>description</column>
+        <row>
+            <value>1</value>
+            <value>form1</value>
+            <value>form 1 description</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>form2</value>
+            <value>form 2 description</value>
+        </row>
+    </table>
+    <table name="inputs">
+    </table>
+</dataset>

@@ -8,15 +8,17 @@
 class BaseController
 {
 
-    public $baseUrl='http://localhost/projects/hollycode2';
+    public $baseUrl='http://localhost/projects/formBuilder';
+    public $baseDir='C:\\xampp\\htdocs\\projects\\formbuilder';
 
-    public function render($filename)
+    public function render($filename,array $vars = null)
     {
+        if(isset($vars))
+            extract($vars);
         ob_start();
-        require_once 'views/'.$filename;
+        require_once $this->baseDir.'\\views\\'.$filename;
         $content = ob_get_contents();
         ob_end_clean();
-        require_once 'templates/main.php';
-        die;
+        require_once $this->baseDir.'/templates/main.php';
     }
 }

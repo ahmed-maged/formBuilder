@@ -1,6 +1,6 @@
 <?php
 
-class Data extends Eloquent{
-    public static $table = 'data';
+class Data extends BaseModel{
+    public static $tableName = 'data';
 
 }

@@ -13,7 +13,7 @@
 //ini_set("error_log", "logs/errors.log");
 
 spl_autoload_register(function ($class) {
-    include 'classes/' . $class . '.php';
+    @include 'classes/' . $class . '.php';
 });
 
 require 'controllers/Controller.php';

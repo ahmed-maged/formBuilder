@@ -20,6 +20,6 @@ class Validator
 
     public static function isMail($input)
     {
-        return preg_match('/^\w+@\w+\.\w+$/',$input);
+        return preg_match('/^\w+@\w+\.[\w{2,4}]+$/',$input);
     }
 }

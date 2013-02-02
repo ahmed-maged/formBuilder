@@ -7,7 +7,38 @@ class Controller extends BaseController {
      */
     public function get_index()
     {
-        $this->render('index.php');
+
+        $_POST = array(
+            'formName'=>'new form',
+            'formDesc'=>'new form desc',
+            'inputs'=>array(
+                array(
+                    'label'=>'name',
+                    'type'=>'text',
+                ),
+                array(
+                    'label'=>'password',
+                    'type'=>'password',
+                ),
+            )
+        );
+        $form = new Form();
+        $form->name = $_POST['formName'];
+        $form->description = $_POST['formDesc'];
+        $form->inputs = array();
+        if(isset($_POST['inputs']))
+        {
+            $inputs = $_POST['inputs'];
+            foreach($inputs as $input)
+            {
+                $newInput = Input::generateInput($input['type'],array('type'=>$input['type'],'label'=>$input['label']));
+                $newInput->type = $input['type'];
+                $newInput->label = $input['label'];
+                $form->inputs[] = $newInput;
+            }
+        }
+        $form->save();
+//        $this->render('index.php');
     }
 
     public function post_index()
@@ -84,9 +115,43 @@ class Controller extends BaseController {
     
     public function get_test()
     {
-        $form = FBForm::find(1);
-//        echo $form->id;die;
-        print_r($form->data());
+//        $m = new MongoClient();
+//        $db = $m->formbuilder;
+//        $collection = $db->Form;
+//        print_r($collection->drop());
+//        $cursor = $collection->findone(array('_id'=>new MongoId("50e2ed15360a03742c000000")));
+//        $cursor = $collection->find();
+//        foreach($cursor as $doc)
+//        {
+//            print_r($cursor);
+//        }
+//        die;
+//        $form = new Entry();
+//        $form->form_id = '50e39550360a038c2c000002';
+//        $form->inputs = array('dfs','qwq');
+//        $form->save();
+//        echo 'id='. $form->id.':::<br>';
+//        echo 'form_id='. $form->form_id.':::<br>';
+//        print_r(Entry::all());
+//        $filter = array('form_id'=>' ');
+//        Entry::delete($filter);
+//          print_r(Entry::find('50e449e6360a03b42e00000b'));
+//        $inputText = new InputText();
+//        $inputText->label = 'name';
+//        $inputText->default_value = 'your name';
+//        $inputText->name = 'name';
+//        $inputText->data = null;
+//        $inputPass = new InputPassword();
+//        $inputPass->label = 'password';
+//        $inputPass->default_value = null;
+//        $inputPass->name = 'pass';
+//        $inputPass->data = null;
+//        $form = new Form();
+//        $form->name = 'login';
+//        $form->description = 'login form';
+//        $form->inputs = array($inputText,$inputPass);
+//        $form->save();
+                print_r(Form::all());
     }
 
 

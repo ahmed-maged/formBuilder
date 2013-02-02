@@ -63,10 +63,13 @@ class MySqlFormsTest extends PHPUnit_Extensions_Database_TestCase
     {
         $this->assertEquals(2, $this->getConnection()->getRowCount('forms'), "Pre-Condition");
 
-        $form = new FBForm();
-        $form->name = 'Test Form';
-        $form->description = 'Hi this is a test form!';
+        $form = new Entry();
+        $form->form_id = '50e39550360a038c2c000002';
+        $form->inputs = array('dfs','qwq');
         $form->save();
+        echo 'id='. $form->id.':::<br>';
+        echo 'form_id='. $form->form_id.':::<br>';
+
         $this->assertEquals(3, $form->id, "Did not save new id to object!");
         $this->assertEquals(3, $this->getConnection()->getRowCount('forms'), "Did not save!");
     }

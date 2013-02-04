@@ -21,4 +21,5 @@ $controller = new Controller();
 $method = 'get_';
 if(!empty($_POST))
     $method = 'post_';
-call_user_func_array(array($controller,$method.$_GET['action']) ,array());
+$action = isset($_GET['action'])?$_GET['action']:'index';
+call_user_func_array(array($controller,$method.$action) ,array());

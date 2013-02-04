@@ -7,21 +7,30 @@ class Controller extends BaseController {
      */
     public function get_index()
     {
+//        $_POST = array(
+//            'formName'=>'new form',
+//            'formDesc'=>'new form desc',
+//            'inputs'=>array(
+//                array(
+//                    'label'=>'name',
+//                    'type'=>'text',
+//                ),
+//                array(
+//                    'label'=>'password',
+//                    'type'=>'password',
+//                ),
+//            )
+//        );
 
-        $_POST = array(
-            'formName'=>'new form',
-            'formDesc'=>'new form desc',
-            'inputs'=>array(
-                array(
-                    'label'=>'name',
-                    'type'=>'text',
-                ),
-                array(
-                    'label'=>'password',
-                    'type'=>'password',
-                ),
-            )
-        );
+
+        $this->render('index.php');
+    }
+
+    public function post_index()
+    {
+        if(!isset($_POST['formName']) || !isset($_POST['formDesc'])){
+            exit('Insufficient data');
+        }
         $form = new Form();
         $form->name = $_POST['formName'];
         $form->description = $_POST['formDesc'];
@@ -38,35 +47,14 @@ class Controller extends BaseController {
             }
         }
         $form->save();
-//        $this->render('index.php');
-    }
-
-    public function post_index()
-    {
-        $form = new FBForm();
-        $form->name = $_POST['formName'];
-        $form->description = $_POST['formDesc'];
-        $form->save();
-        if(isset($_POST['inputs']))
-        {
-            $inputs = $_POST['inputs'];
-            foreach($inputs as $input)
-            {
-                $newInput = new FBInput();
-                $newInput->form_id = $form->id;
-                $newInput->type = $input['type'];
-                $newInput->name = $input['label'];
-                $newInput->save();
-            }
-        }
         $msg = "Your form has been submitted!";
         $this->render('message.php',array('msg'=>$msg));
 
     }
     
-    public function get_forms()
+    public function get_manage_forms()
     {
-        $forms = FBForm::all();
+        $forms = Form::all();
         $this->render('forms.php',array('forms'=>$forms));
     }
 

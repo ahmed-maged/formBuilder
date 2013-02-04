@@ -33,7 +33,7 @@ class BaseModel
         $collection = $db->$tableName;
         $collection->insert($data);
         $this->id = $data['_id'];
-        echo $this->id;
+//        echo $this->id;
     }
 
     public static function all()

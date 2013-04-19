@@ -8,7 +8,7 @@
 
 namespace models;
 
-class Form extends \core\BaseModel
+class Form extends \db\ActiveRecord
 {
     public $id;
     public $name;

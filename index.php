@@ -34,7 +34,11 @@ spl_autoload_register(function ($class) {
     if(!file_exists($file)){
         $file = 'application/' . str_replace('\\', '/', $class) . '.php';
     }
-    require_once($file);
+    if(!@include_once($file)){
+//        $msg = 'Could not include '.$file.
+            print_r(debug_backtrace());
+//        throw new Exception ($msg);
+    }
 });
 
 //require 'application/controllers/Controller.php';
@@ -44,4 +48,10 @@ $method = 'get_';
 if(!empty($_POST))
     $method = 'post_';
 $action = isset($_GET['action'])?$_GET['action']:'index';
-call_user_func_array(array($controller,$method.$action) ,array());
+
+try{
+    call_user_func_array(array($controller,$method.$action) ,array());
+}
+catch(Exception $e){
+    echo $e->getMessage();
+}

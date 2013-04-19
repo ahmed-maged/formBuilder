@@ -8,7 +8,7 @@
 
 namespace models;
 
-class Entry extends \core\BaseModel
+class Entry extends \db\ActiveRecord
 {
     public $id;
     public $form_id;

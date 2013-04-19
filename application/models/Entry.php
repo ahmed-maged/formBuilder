@@ -3,12 +3,14 @@
  * Created by JetBrains PhpStorm.
  * User: Nookz
  * Date: 1/2/13
- * Time: 3:12 AM
+ * Time: 3:13 AM
  */
-class Form extends BaseModel
+
+namespace models;
+
+class Entry extends \core\BaseModel
 {
     public $id;
-    public $name;
-    public $description;
+    public $form_id;
     public $inputs = array();
 }

@@ -1,5 +1,10 @@
 <?php
 
+namespace controllers;
+
+use core\BaseController;
+use models;
+
 class Controller extends BaseController {
 
     /**
@@ -7,6 +12,8 @@ class Controller extends BaseController {
      */
     public function get_index()
     {
+        $options = \core\Base::get_config_options();
+//        var_dump($options);die;
 //        $_POST = array(
 //            'formName'=>'new form',
 //            'formDesc'=>'new form desc',
@@ -22,8 +29,26 @@ class Controller extends BaseController {
 //            )
 //        );
 
-
         $this->render('index.php');
+    }
+
+    public function get_test(){
+        $this->render('test.php');
+    }
+
+    public function post_test(){
+        if(isset($_POST['all'])){
+            echo json_encode(\models\Form::all());
+        }
+        elseif(isset($_POST['find'])){
+            $entry = \models\Form::find($_POST['id']);
+            var_dump($entry);
+        }
+        elseif(isset($_POST['remove'])){
+            $entry = \models\Form::find($_POST['id']);
+            $entry->delete();
+            var_dump($entry);
+        }
     }
 
     public function post_index()
@@ -51,7 +76,12 @@ class Controller extends BaseController {
         $this->render('message.php',array('msg'=>$msg));
 
     }
-    
+
+    public function get_view(){
+        $id = $_GET['id'];
+        $form = Form::find($id);
+        $this->render('form.php',array('form'=>$form));
+    }
     public function get_manage_forms()
     {
         $forms = Form::all();
@@ -86,7 +116,7 @@ class Controller extends BaseController {
     
     public function post_delete_form()
     {
-        $formId = Input::get('formId');
+        $formId = $_POST['formId'];
         FBForm::find($formId)->data()->delete();
         FBForm::find($formId)->inputs()->delete();
         FBForm::find($formId)->delete();
@@ -101,7 +131,7 @@ class Controller extends BaseController {
         return json_encode(array('success'=>true));
     }
     
-    public function get_test()
+    public function get_test2()
     {
 //        $m = new MongoClient();
 //        $db = $m->formbuilder;

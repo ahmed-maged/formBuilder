@@ -11,8 +11,8 @@
         </div>
             <div class="nav">
                 <ul class="nav_list">
-                    <li><a href="<?php echo $this->baseUrl ?>/index">Index</a></li>
-                    <li><a href="<?php echo $this->baseUrl ?>/manage_forms">Manage forms</a></li>
+                    <li><a href="<?php echo \Helper::url('index') ?>">Index</a></li>
+                    <li><a href="<?php echo \Helper::url('manage_forms') ?>">Manage forms</a></li>
                 </ul>
             </div>
         <div class="main_content" style="">

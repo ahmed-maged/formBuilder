@@ -2,8 +2,8 @@
 <html>
     <head>
         <title>FormBuilder</title>
-        {{ HTML::style('css/style.css') }}
-        {{ HTML::script('js/jquery-1.8.3.js') }}
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/jquery-1.8.3.js"></script>
     </head>
     <body>
         <div class="header">
@@ -12,19 +12,20 @@
             
         <div class="" style="width: 1100px;height: 600px;margin: 0px auto;">
            <div id="singleForm" style="margin: 10px auto;width: 600px;">
-    <h2>{{ $form->name }}</h2>
+    <h2><?php echo $form['name'] ?></h2>
     
-{{ Form::open() }}
-@foreach ($form->inputs as $input)
-@if( $input->type != "checkbox" )
+<form>
+<?php foreach ($form['inputs'] as $input): ?>
+<?php if( $input['type'] != "checkbox" ): ?>
 <div class="form_label">
-{{ Form::label("input_$input->id","$input->name") }}
+    <label><?php echo $input['name']; ?></label>
 </div>
-@endif
-@if( $input->type == "text" )
+<?php endif; ?>
+<?php if( $input['type'] == "text" ): ?>
 <div class="form_input">
 {{ Form::text("input_$input->id") }}
 </div>
+    <?php endif; ?>
 @elseif( $input->type == "textArea" )
 <div class="form_input">
 {{ Form::textArea("input_$input->id") }}
@@ -39,10 +40,10 @@
 {{ $input->name }}
 </div>
 @endif
-@endforeach
+<?php endforeach; ?>
 {{ Form::hidden('formId',"$form->id") }}
 {{ Form::submit('Submit') }}
-{{ Form::close() }}
+</form>
 </div>
         </div>
     </body>

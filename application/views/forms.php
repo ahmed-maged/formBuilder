@@ -4,7 +4,7 @@
 <?php foreach( $forms as $form ): ?>
 <li>
     <h4><?php echo $form['name']; ?></h4>
-    <div class="forms_link"> <a href="<?php echo $this->baseUrl ?>?id=<?php echo $form['id'] ?>">View Form</a></div>
+    <div class="forms_link"> <a href="<?php echo $this->baseUrl ?>/view/id=<?php echo $form['_id'] ?>">View Form</a></div>
     <div class="forms_link"><a href="<?php echo $this->baseUrl ?>/entries?formId=<?php echo $form['id'] ?>">View Entries</a></div>
     <div class="forms_link"><a class="forms_delete" href="javascript:" formId="<?php echo $form['id'] ?>">Delete</a></div>
     <div class="clear-fix"></div>
